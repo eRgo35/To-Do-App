@@ -16,8 +16,7 @@ export class TodosService {
   }
 
   findAllTodos() {
-    return this.afs.collection('Todos', ref => ref
-      .orderBy('date', 'desc')).snapshotChanges();
+    return this.afs.collection('Todos', ref => ref.orderBy('date', 'desc')).snapshotChanges();
   }
 
   updateTodo(id: string, todo: {}) {

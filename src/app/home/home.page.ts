@@ -11,9 +11,17 @@ export class HomePage implements OnInit{
   constructor(private todosservice: TodosService) {}
 
   private todoLimit = 5;
-    public lastCreatedFiveTodos = [];
+  
+  public lastCreatedFiveTodos = [];
   
   ngOnInit(): void {
     this.findLastCreatedTodos();
   }
+
+  findLastCreatedTodos() {
+    this.todosservice.findLastCreatedTodos(this.todoLimit).subscribe(res => {
+      this.lastCreatedFiveTodos = res;
+    });
+  }
+
 }

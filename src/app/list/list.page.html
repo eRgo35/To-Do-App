@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>
-      Hello
+      All To-Do's
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,16 +9,19 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="primary">
-      <ion-title size="large">Hello</ion-title>
+      <ion-title size="large">All To-Do's</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <div *ngFor="let todo of lastCreatedFiveTodos">
+    <div *ngFor="let todo of todos">
       <p>
         <strong>{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} </strong>
         {{ todo.payload.doc.data().title }}
       </p>
+      <div *ngIf="todo.payload.doc.data().status">
+        <button (click)="updateToDo(todo.payload.doc.id)">Done</button>
+      </div>
     </div>
   </div>
 </ion-content>
