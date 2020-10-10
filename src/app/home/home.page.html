@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>
-      Hello
+      My Tasks
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,16 +9,17 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="primary">
-      <ion-title size="large">Hello</ion-title>
+      <ion-title size="large">My Tasks</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <div *ngFor="let todo of lastCreatedFiveTodos">
-      <p>
-        <strong>{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} </strong>
-        {{ todo.payload.doc.data().title }}
-      </p>
-    </div>
+    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+      <ion-reorder *ngFor="let todo of lastCreatedFiveTodos">
+        <ion-item>
+          <ion-label>{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} | {{ todo.payload.doc.data().title }}</ion-label>
+        </ion-item>
+      </ion-reorder>
+    </ion-reorder-group>
   </div>
 </ion-content>

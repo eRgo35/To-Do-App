@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>
-      All To-Do's
+      Finished Tasks
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,19 +9,22 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="primary">
-      <ion-title size="large">All To-Do's</ion-title>
+      <ion-title size="large">Finished Tasks</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <div *ngFor="let todo of todos">
-      <p>
-        <strong>{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} </strong>
-        {{ todo.payload.doc.data().title }}
-      </p>
-      <div *ngIf="todo.payload.doc.data().status">
-        <button (click)="updateToDo(todo.payload.doc.id)">Done</button>
-      </div>
-    </div>
+    <ion-list (ionItemReorder)="doReorder($event)" disabled="false" *ngFor="let todo of todos">
+        <ion-item>
+          <ion-label>{{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} | {{ todo.payload.doc.data().title }}</ion-label>
+          <div *ngIf="todo.payload.doc.data().status">
+            <ion-buttons slot="end">
+              <ion-button (click)="updateToDo(todo.payload.doc.id)" shape="round" fill="clear">
+                <ion-icon slot="icon-only" name="radio-button-off"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </div>
+        </ion-item>
+    </ion-list>
   </div>
 </ion-content>
