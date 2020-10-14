@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      My Tasks
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="primary">
+      <ion-title size="large">My Tasks</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-list>
+      <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+        <ion-item *ngFor="let todo of todos" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+            <ion-checkbox [checked]="done" (click)="log(todo.payload.doc.data().status); updateToDo(todo.payload.doc.id, todo.payload.doc.data().status)" color="primary" slot="start"></ion-checkbox>
+            <ion-label>
+              {{ todo.payload.doc.data().date.toMillis() | date:'dd.MM.yyyy HH:mm:ss' }} |
+              {{ todo.payload.doc.data().title }}
+            </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+      </ion-reorder-group>
+    </ion-list>
+  </div>
+</ion-content>

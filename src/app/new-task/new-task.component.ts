@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { TodosService } from '../services/todos.service';
 
 @Component({
-  selector: 'app-add-task',
-  templateUrl: './add-task.page.html',
-  styleUrls: ['./add-task.page.scss'],
+  selector: 'app-new-task',
+  templateUrl: './new-task.component.html',
+  styleUrls: ['./new-task.component.scss'],
 })
-export class AddTaskPage implements OnInit {
+export class NewTaskComponent implements OnInit {
 
   todoForm: FormGroup;
+
+  myDate = false;
+  myTime = false;
 
   constructor(
     private todosService: TodosService, 

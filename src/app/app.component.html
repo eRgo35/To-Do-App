@@ -1,18 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <app-home></app-home>
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="addTask()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
+    <div>
+      <ion-fab-button (click)="addTask()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </div>
   </ion-fab>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button routerLink="/list">
-      <ion-icon name="checkmark"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/home">
-      <ion-icon name="home"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" color="primary">
+      <ion-buttons fxLayoutAlign="space-between center">
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

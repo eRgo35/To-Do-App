@@ -11,9 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule, 
@@ -21,7 +26,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [
     StatusBar,

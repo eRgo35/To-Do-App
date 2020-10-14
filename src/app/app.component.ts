@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ModalController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AddTaskPage } from './add-task/add-task.page';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent {
 
   async addTask() {
     const modal = await this.controller.create({
-      component: AddTaskPage
+      component: NewTaskComponent
     });
     return await modal.present();
   }
